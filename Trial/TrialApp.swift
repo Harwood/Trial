@@ -10,11 +10,16 @@ import SwiftUI
 @main
 struct TrialApp: App {
     let persistenceController = PersistenceController.shared
+  @StateObject var episodeProvider = EpisodeProvider()
+
+  // yBKstJ7RXk9EpVmpPhndKaECsUQU0OqP
 
     var body: some Scene {
         WindowGroup {
+          NavigationView {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+              .environmentObject(episodeProvider)
+          }
         }
     }
 }

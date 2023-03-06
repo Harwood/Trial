@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Trial
 
 final class TrialTests: XCTestCase {
 
@@ -31,5 +32,11 @@ final class TrialTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+  func testEpisodeParsing() throws {
+    let decoded = try JSONDecoder().decode(Episode.self, from: testEpisode_1)
+    print(decoded)
+    XCTAssert(decoded.guid == UUID(uuidString: "d385e1bc-5f17-4b7e-9c2a-58f4d1c766ed"))
+  }
 
 }
